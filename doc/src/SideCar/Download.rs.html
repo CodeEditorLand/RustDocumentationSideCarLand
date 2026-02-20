@@ -29,24 +29,24 @@
 <a href=#29 id=29 data-nosnippet>29</a>
 <a href=#30 id=30 data-nosnippet>30</a></span><span class="doccomment">/// Represents a single platform target for which binaries will be downloaded.
 <a href=#31 id=31 data-nosnippet>31</a>/// This struct holds all the necessary identifiers for a given platform.
-<a href=#32 id=32 data-nosnippet>32</a></span><span class="attr">#[derive(Clone, Debug)]
-<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">struct </span>PlatformTarget {
+<a href=#32 id=32 data-nosnippet>32</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
+<a href=#33 id=33 data-nosnippet>33</a></span><span class="kw">struct </span><a href="../../SideCar/Download/struct.PlatformTarget.html">PlatformTarget</a> {
 <a href=#34 id=34 data-nosnippet>34</a>	<span class="doccomment">/// The identifier used in the download URL (e.g., "win-x64",
 <a href=#35 id=35 data-nosnippet>35</a>	/// "linux-arm64").
-<a href=#36 id=36 data-nosnippet>36</a>	</span>DownloadIdentifier:String,
+<a href=#36 id=36 data-nosnippet>36</a>	</span>DownloadIdentifier:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#37 id=37 data-nosnippet>37</a>
 <a href=#38 id=38 data-nosnippet>38</a>	<span class="doccomment">/// The file extension of the archive (e.g., "zip", "tar.gz").
-<a href=#39 id=39 data-nosnippet>39</a>	</span>ArchiveExtension:String,
+<a href=#39 id=39 data-nosnippet>39</a>	</span>ArchiveExtension:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#40 id=40 data-nosnippet>40</a>
 <a href=#41 id=41 data-nosnippet>41</a>	<span class="doccomment">/// The official Tauri target triple for this platform (e.g.,
 <a href=#42 id=42 data-nosnippet>42</a>	/// "x86_64-pc-windows-msvc").
-<a href=#43 id=43 data-nosnippet>43</a>	</span>TauriTargetTriple:String,
+<a href=#43 id=43 data-nosnippet>43</a>	</span>TauriTargetTriple:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#44 id=44 data-nosnippet>44</a>}
 <a href=#45 id=45 data-nosnippet>45</a>
 <a href=#46 id=46 data-nosnippet>46</a><span class="doccomment">/// Defines the type of archive being handled, which determines the extraction
 <a href=#47 id=47 data-nosnippet>47</a>/// logic.
-<a href=#48 id=48 data-nosnippet>48</a></span><span class="attr">#[derive(Clone, Debug, PartialEq)]
-<a href=#49 id=49 data-nosnippet>49</a></span><span class="kw">enum </span>ArchiveType {
+<a href=#48 id=48 data-nosnippet>48</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/cmp/derive.PartialEq.html">PartialEq</a>)]
+<a href=#49 id=49 data-nosnippet>49</a></span><span class="kw">enum </span><a href="../../SideCar/Download/enum.ArchiveType.html">ArchiveType</a> {
 <a href=#50 id=50 data-nosnippet>50</a>	Zip,
 <a href=#51 id=51 data-nosnippet>51</a>
 <a href=#52 id=52 data-nosnippet>52</a>	TarGz,
@@ -54,87 +54,87 @@
 <a href=#54 id=54 data-nosnippet>54</a>
 <a href=#55 id=55 data-nosnippet>55</a><span class="doccomment">/// Represents a specific version of Node.js as returned by the official index.
 <a href=#56 id=56 data-nosnippet>56</a>/// Used for deserializing the JSON response from `nodejs.org`.
-<a href=#57 id=57 data-nosnippet>57</a></span><span class="attr">#[derive(Deserialize, Debug)]
-<a href=#58 id=58 data-nosnippet>58</a></span><span class="kw">struct </span>NodeVersionInfo {
-<a href=#59 id=59 data-nosnippet>59</a>	version:String,
+<a href=#57 id=57 data-nosnippet>57</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
+<a href=#58 id=58 data-nosnippet>58</a></span><span class="kw">struct </span><a href="../../SideCar/Download/struct.NodeVersionInfo.html">NodeVersionInfo</a> {
+<a href=#59 id=59 data-nosnippet>59</a>	version:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#60 id=60 data-nosnippet>60</a>}
 <a href=#61 id=61 data-nosnippet>61</a>
 <a href=#62 id=62 data-nosnippet>62</a><span class="doccomment">/// Contains all the necessary information to perform a single download and
 <a href=#63 id=63 data-nosnippet>63</a>/// installation task. An instance of this struct is created for each binary
 <a href=#64 id=64 data-nosnippet>64</a>/// that needs to be downloaded.
-<a href=#65 id=65 data-nosnippet>65</a></span><span class="attr">#[derive(Clone, Debug)]
-<a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">struct </span>DownloadTask {
+<a href=#65 id=65 data-nosnippet>65</a></span><span class="attr">#[derive(<a href="https://doc.rust-lang.org/nightly/core/clone/derive.Clone.html">Clone</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>)]
+<a href=#66 id=66 data-nosnippet>66</a></span><span class="kw">struct </span><a href="../../SideCar/Download/struct.DownloadTask.html">DownloadTask</a> {
 <a href=#67 id=67 data-nosnippet>67</a>	<span class="doccomment">/// The name of the sidecar (e.g., "NODE").
-<a href=#68 id=68 data-nosnippet>68</a>	</span>SidecarName:String,
+<a href=#68 id=68 data-nosnippet>68</a>	</span>SidecarName:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#69 id=69 data-nosnippet>69</a>
 <a href=#70 id=70 data-nosnippet>70</a>	<span class="doccomment">/// The major version string requested (e.g., "24").
-<a href=#71 id=71 data-nosnippet>71</a>	</span>MajorVersion:String,
+<a href=#71 id=71 data-nosnippet>71</a>	</span>MajorVersion:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#72 id=72 data-nosnippet>72</a>
 <a href=#73 id=73 data-nosnippet>73</a>	<span class="doccomment">/// The full, resolved version string (e.g., "v24.0.0").
-<a href=#74 id=74 data-nosnippet>74</a>	</span>FullVersion:String,
+<a href=#74 id=74 data-nosnippet>74</a>	</span>FullVersion:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#75 id=75 data-nosnippet>75</a>
 <a href=#76 id=76 data-nosnippet>76</a>	<span class="doccomment">/// The complete URL to download the archive from.
-<a href=#77 id=77 data-nosnippet>77</a>	</span>DownloadURL:String,
+<a href=#77 id=77 data-nosnippet>77</a>	</span>DownloadURL:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#78 id=78 data-nosnippet>78</a>
 <a href=#79 id=79 data-nosnippet>79</a>	<span class="doccomment">/// The directory where temporary folders for this task will be created.
-<a href=#80 id=80 data-nosnippet>80</a>	</span>TempParentDirectory:PathBuf,
+<a href=#80 id=80 data-nosnippet>80</a>	</span>TempParentDirectory:<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
 <a href=#81 id=81 data-nosnippet>81</a>
 <a href=#82 id=82 data-nosnippet>82</a>	<span class="doccomment">/// The final destination directory for the extracted binaries.
-<a href=#83 id=83 data-nosnippet>83</a>	</span>DestinationDirectory:PathBuf,
+<a href=#83 id=83 data-nosnippet>83</a>	</span>DestinationDirectory:<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>,
 <a href=#84 id=84 data-nosnippet>84</a>
 <a href=#85 id=85 data-nosnippet>85</a>	<span class="doccomment">/// The type of archive to be downloaded.
-<a href=#86 id=86 data-nosnippet>86</a>	</span>ArchiveType:ArchiveType,
+<a href=#86 id=86 data-nosnippet>86</a>	</span>ArchiveType:<a href="#49-53">ArchiveType</a>,
 <a href=#87 id=87 data-nosnippet>87</a>
 <a href=#88 id=88 data-nosnippet>88</a>	<span class="doccomment">/// The name of the root folder inside the archive once extracted.
-<a href=#89 id=89 data-nosnippet>89</a>	</span>ExtractedFolderName:String,
+<a href=#89 id=89 data-nosnippet>89</a>	</span>ExtractedFolderName:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#90 id=90 data-nosnippet>90</a>
 <a href=#91 id=91 data-nosnippet>91</a>	<span class="doccomment">/// The Tauri target triple for this download task.
-<a href=#92 id=92 data-nosnippet>92</a>	</span>TauriTargetTriple:String,
+<a href=#92 id=92 data-nosnippet>92</a>	</span>TauriTargetTriple:<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>,
 <a href=#93 id=93 data-nosnippet>93</a>}
 <a href=#94 id=94 data-nosnippet>94</a>
 <a href=#95 id=95 data-nosnippet>95</a><span class="doccomment">/// Represents the structure of the `Cache.json` file.
 <a href=#96 id=96 data-nosnippet>96</a>/// It uses a HashMap to map a unique key (representing a specific
 <a href=#97 id=97 data-nosnippet>97</a>/// sidecar/version/platform) to the full version string that was last
 <a href=#98 id=98 data-nosnippet>98</a>/// downloaded.
-<a href=#99 id=99 data-nosnippet>99</a></span><span class="attr">#[derive(Serialize, Deserialize, Debug, Default)]
-<a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">struct </span>DownloadCache {
+<a href=#99 id=99 data-nosnippet>99</a></span><span class="attr">#[derive(<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://doc.rust-lang.org/nightly/core/fmt/macros/derive.Debug.html">Debug</a>, <a href="https://doc.rust-lang.org/nightly/core/default/derive.Default.html">Default</a>)]
+<a href=#100 id=100 data-nosnippet>100</a></span><span class="kw">struct </span><a href="../../SideCar/Download/struct.DownloadCache.html">DownloadCache</a> {
 <a href=#101 id=101 data-nosnippet>101</a>	<span class="doccomment">/// The core data structure for the cache.
 <a href=#102 id=102 data-nosnippet>102</a>	/// Key: A unique string like "x86_64-pc-windows-msvc/NODE/24".
 <a href=#103 id=103 data-nosnippet>103</a>	/// Value: The full version string, like "v24.0.0".
-<a href=#104 id=104 data-nosnippet>104</a>	</span>Entries:HashMap&lt;String, String&gt;,
+<a href=#104 id=104 data-nosnippet>104</a>	</span>Entries:<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;,
 <a href=#105 id=105 data-nosnippet>105</a>}
 <a href=#106 id=106 data-nosnippet>106</a>
-<a href=#107 id=107 data-nosnippet>107</a><span class="kw">impl </span>DownloadCache {
+<a href=#107 id=107 data-nosnippet>107</a><span class="kw">impl </span><a href="#100-105">DownloadCache</a> {
 <a href=#108 id=108 data-nosnippet>108</a>	<span class="doccomment">/// Loads the cache from the `Cache.json` file in the base sidecar
 <a href=#109 id=109 data-nosnippet>109</a>	/// directory. If the file doesn't exist, it returns a new, empty cache.
-<a href=#110 id=110 data-nosnippet>110</a>	</span><span class="kw">fn </span>Load(CachePath:<span class="kw-2">&amp;</span>Path) -&gt; <span class="self">Self </span>{
-<a href=#111 id=111 data-nosnippet>111</a>		<span class="kw">if </span>!CachePath.exists() {
-<a href=#112 id=112 data-nosnippet>112</a>			<span class="macro">info!</span>(<span class="string">"Cache file not found. A new one will be created."</span>);
+<a href=#110 id=110 data-nosnippet>110</a>	</span><span class="kw">fn </span>Load(CachePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <span class="self">Self </span>{
+<a href=#111 id=111 data-nosnippet>111</a>		<span class="kw">if </span>!<a href="#110">CachePath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
+<a href=#112 id=112 data-nosnippet>112</a>			<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"Cache file not found. A new one will be created."</span>);
 <a href=#113 id=113 data-nosnippet>113</a>
-<a href=#114 id=114 data-nosnippet>114</a>			<span class="kw">return </span>DownloadCache::default();
+<a href=#114 id=114 data-nosnippet>114</a>			<span class="kw">return </span><a href="#100-105">DownloadCache</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>();
 <a href=#115 id=115 data-nosnippet>115</a>		}
 <a href=#116 id=116 data-nosnippet>116</a>
-<a href=#117 id=117 data-nosnippet>117</a>		<span class="kw">let </span>FileContents = <span class="kw">match </span>fs::read_to_string(CachePath) {
-<a href=#118 id=118 data-nosnippet>118</a>			<span class="prelude-val">Ok</span>(Contents) =&gt; Contents,
+<a href=#117 id=117 data-nosnippet>117</a>		<span class="kw">let </span>FileContents = <span class="kw">match </span>fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<a href="#110">CachePath</a>) {
+<a href=#118 id=118 data-nosnippet>118</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Contents) =&gt; <a href="#118">Contents</a>,
 <a href=#119 id=119 data-nosnippet>119</a>
-<a href=#120 id=120 data-nosnippet>120</a>			<span class="prelude-val">Err</span>(Error) =&gt; {
-<a href=#121 id=121 data-nosnippet>121</a>				<span class="macro">warn!</span>(<span class="string">"Failed to read cache file: {}. Starting with an empty cache."</span>, Error);
+<a href=#120 id=120 data-nosnippet>120</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
+<a href=#121 id=121 data-nosnippet>121</a>				<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"Failed to read cache file: {}. Starting with an empty cache."</span>, Error);
 <a href=#122 id=122 data-nosnippet>122</a>
-<a href=#123 id=123 data-nosnippet>123</a>				<span class="kw">return </span>DownloadCache::default();
+<a href=#123 id=123 data-nosnippet>123</a>				<span class="kw">return </span><a href="#100-105">DownloadCache</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>();
 <a href=#124 id=124 data-nosnippet>124</a>			},
 <a href=#125 id=125 data-nosnippet>125</a>		};
 <a href=#126 id=126 data-nosnippet>126</a>
-<a href=#127 id=127 data-nosnippet>127</a>		<span class="kw">match </span>serde_json::from_str(<span class="kw-2">&amp;</span>FileContents) {
-<a href=#128 id=128 data-nosnippet>128</a>			<span class="prelude-val">Ok</span>(Cache) =&gt; {
-<a href=#129 id=129 data-nosnippet>129</a>				<span class="macro">info!</span>(<span class="string">"Successfully loaded download cache."</span>);
+<a href=#127 id=127 data-nosnippet>127</a>		<span class="kw">match </span>serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/de/fn.from_str.html">from_str</a>(<span class="kw-2">&amp;</span><a href="#117">FileContents</a>) {
+<a href=#128 id=128 data-nosnippet>128</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Cache) =&gt; {
+<a href=#129 id=129 data-nosnippet>129</a>				<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"Successfully loaded download cache."</span>);
 <a href=#130 id=130 data-nosnippet>130</a>
-<a href=#131 id=131 data-nosnippet>131</a>				Cache
+<a href=#131 id=131 data-nosnippet>131</a>				<a href="#128">Cache</a>
 <a href=#132 id=132 data-nosnippet>132</a>			},
 <a href=#133 id=133 data-nosnippet>133</a>
-<a href=#134 id=134 data-nosnippet>134</a>			<span class="prelude-val">Err</span>(Error) =&gt; {
-<a href=#135 id=135 data-nosnippet>135</a>				<span class="macro">warn!</span>(<span class="string">"Failed to parse cache file: {}. Starting with an empty cache."</span>, Error);
+<a href=#134 id=134 data-nosnippet>134</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) =&gt; {
+<a href=#135 id=135 data-nosnippet>135</a>				<a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn!</a>(<span class="string">"Failed to parse cache file: {}. Starting with an empty cache."</span>, Error);
 <a href=#136 id=136 data-nosnippet>136</a>
-<a href=#137 id=137 data-nosnippet>137</a>				DownloadCache::default()
+<a href=#137 id=137 data-nosnippet>137</a>				<a href="#100-105">DownloadCache</a>::<a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">default</a>()
 <a href=#138 id=138 data-nosnippet>138</a>			},
 <a href=#139 id=139 data-nosnippet>139</a>		}
 <a href=#140 id=140 data-nosnippet>140</a>	}
@@ -142,33 +142,33 @@
 <a href=#142 id=142 data-nosnippet>142</a>	<span class="doccomment">/// Saves the current state of the cache to the `Cache.json` file.
 <a href=#143 id=143 data-nosnippet>143</a>	/// The JSON is pretty-printed with tabs for indentation.
 <a href=#144 id=144 data-nosnippet>144</a>	/// Entries are sorted alphabetically by key for consistency.
-<a href=#145 id=145 data-nosnippet>145</a>	</span><span class="kw">fn </span>Save(<span class="kw-2">&amp;</span><span class="self">self</span>, CachePath:<span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#145 id=145 data-nosnippet>145</a>	</span><span class="kw">fn </span>Save(<span class="kw-2">&amp;</span><span class="self">self</span>, CachePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; {
 <a href=#146 id=146 data-nosnippet>146</a>		<span class="comment">// Create a BTreeMap to sort entries alphabetically by key
-<a href=#147 id=147 data-nosnippet>147</a>		</span><span class="kw">let </span>SortedEntries:BTreeMap&lt;<span class="kw">_</span>, <span class="kw">_</span>&gt; = <span class="self">self</span>.Entries.iter().collect();
+<a href=#147 id=147 data-nosnippet>147</a>		</span><span class="kw">let </span>SortedEntries:<a href="https://doc.rust-lang.org/nightly/alloc/collections/btree/map/struct.BTreeMap.html">BTreeMap</a>&lt;<span class="kw">_</span>, <span class="kw">_</span>&gt; = <a class="self" href="#145">self</a>.Entries.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#148 id=148 data-nosnippet>148</a>
 <a href=#149 id=149 data-nosnippet>149</a>		<span class="comment">// Create a temporary struct to hold the sorted entries for serialization
-<a href=#150 id=150 data-nosnippet>150</a>		</span><span class="kw">let </span>CacheToSerialize = <span class="macro">serde_json::json!</span>({
+<a href=#150 id=150 data-nosnippet>150</a>		</span><span class="kw">let </span>CacheToSerialize = <a href="https://docs.rs/serde_json/1.0.149/serde_json/macro.json.html">serde_json::json!</a>({
 <a href=#151 id=151 data-nosnippet>151</a>
 <a href=#152 id=152 data-nosnippet>152</a>			<span class="string">"Entries"</span>: SortedEntries
 <a href=#153 id=153 data-nosnippet>153</a>		});
 <a href=#154 id=154 data-nosnippet>154</a>
 <a href=#155 id=155 data-nosnippet>155</a>		<span class="comment">// Create an in-memory buffer to write the serialized JSON to.
-<a href=#156 id=156 data-nosnippet>156</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>Buffer = Vec::new();
+<a href=#156 id=156 data-nosnippet>156</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>Buffer = <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>::<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.new">new</a>();
 <a href=#157 id=157 data-nosnippet>157</a>
 <a href=#158 id=158 data-nosnippet>158</a>		<span class="comment">// Create a formatter that uses a tab character for indentation.
-<a href=#159 id=159 data-nosnippet>159</a>		</span><span class="kw">let </span>Formatter = serde_json::ser::PrettyFormatter::with_indent(<span class="string">b"\t"</span>);
+<a href=#159 id=159 data-nosnippet>159</a>		</span><span class="kw">let </span>Formatter = serde_json::ser::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/struct.PrettyFormatter.html">PrettyFormatter</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/struct.PrettyFormatter.html#method.with_indent">with_indent</a>(<span class="string">b"\t"</span>);
 <a href=#160 id=160 data-nosnippet>160</a>
 <a href=#161 id=161 data-nosnippet>161</a>		<span class="comment">// Create a serializer with our custom formatter.
-<a href=#162 id=162 data-nosnippet>162</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>Serializer = serde_json::Serializer::with_formatter(<span class="kw-2">&amp;mut </span>Buffer, Formatter);
+<a href=#162 id=162 data-nosnippet>162</a>		</span><span class="kw">let </span><span class="kw-2">mut </span>Serializer = serde_json::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/struct.Serializer.html">Serializer</a>::<a href="https://docs.rs/serde_json/1.0.149/serde_json/ser/struct.Serializer.html#method.with_formatter">with_formatter</a>(<span class="kw-2">&amp;mut </span><a href="#156">Buffer</a>, <a href="#159">Formatter</a>);
 <a href=#163 id=163 data-nosnippet>163</a>
 <a href=#164 id=164 data-nosnippet>164</a>		<span class="comment">// Serialize the sorted cache data into the buffer.
-<a href=#165 id=165 data-nosnippet>165</a>		</span>CacheToSerialize.serialize(<span class="kw-2">&amp;mut </span>Serializer)<span class="question-mark">?</span>;
+<a href=#165 id=165 data-nosnippet>165</a>		</span><a href="#150">CacheToSerialize</a>.<a href="https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html#tymethod.serialize">serialize</a>(<span class="kw-2">&amp;mut </span><a href="#162">Serializer</a>)<span class="question-mark">?</span>;
 <a href=#166 id=166 data-nosnippet>166</a>
 <a href=#167 id=167 data-nosnippet>167</a>		<span class="comment">// Write the buffer's contents to the actual file on disk.
-<a href=#168 id=168 data-nosnippet>168</a>		</span>fs::write(CachePath, <span class="kw-2">&amp;</span>Buffer)
-<a href=#169 id=169 data-nosnippet>169</a>			.with_context(|| <span class="macro">format!</span>(<span class="string">"Failed to write tab-formatted cache to {:?}"</span>, CachePath))<span class="question-mark">?</span>;
+<a href=#168 id=168 data-nosnippet>168</a>		</span>fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<a href="#145">CachePath</a>, <span class="kw-2">&amp;</span><a href="#156">Buffer</a>)
+<a href=#169 id=169 data-nosnippet>169</a>			.<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html#tymethod.with_context">with_context</a>(|| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to write tab-formatted cache to {:?}"</span>, CachePath))<span class="question-mark">?</span>;
 <a href=#170 id=170 data-nosnippet>170</a>
-<a href=#171 id=171 data-nosnippet>171</a>		<span class="prelude-val">Ok</span>(())
+<a href=#171 id=171 data-nosnippet>171</a>		<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#172 id=172 data-nosnippet>172</a>	}
 <a href=#173 id=173 data-nosnippet>173</a>}
 <a href=#174 id=174 data-nosnippet>174</a>
@@ -180,39 +180,39 @@
 <a href=#180 id=180 data-nosnippet>180</a>/// - Standalone builds: `.../SideCar/Target/release/`
 <a href=#181 id=181 data-nosnippet>181</a>/// - Workspace builds: `.../workspace/Target/release/SideCar` (where the
 <a href=#182 id=182 data-nosnippet>182</a>///   workspace root contains multiple crates including Element/SideCar)
-<a href=#183 id=183 data-nosnippet>183</a></span><span class="kw">fn </span>GetBaseSidecarDirectory() -&gt; <span class="prelude-ty">Result</span>&lt;PathBuf&gt; {
+<a href=#183 id=183 data-nosnippet>183</a></span><span class="kw">fn </span><a href="../../SideCar/Download/fn.GetBaseSidecarDirectory.html">GetBaseSidecarDirectory</a>() -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>&gt; {
 <a href=#184 id=184 data-nosnippet>184</a>	<span class="comment">// Get the full path to the currently running executable.
-<a href=#185 id=185 data-nosnippet>185</a>	</span><span class="kw">let </span>CurrentExePath = env::current_exe().context(<span class="string">"Failed to get the path of the current executable."</span>)<span class="question-mark">?</span>;
+<a href=#185 id=185 data-nosnippet>185</a>	</span><span class="kw">let </span>CurrentExePath = env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.current_exe.html">current_exe</a>().<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html#tymethod.context">context</a>(<span class="string">"Failed to get the path of the current executable."</span>)<span class="question-mark">?</span>;
 <a href=#186 id=186 data-nosnippet>186</a>
 <a href=#187 id=187 data-nosnippet>187</a>	<span class="comment">// Start from the directory containing the executable and walk up the tree.
-<a href=#188 id=188 data-nosnippet>188</a>	</span><span class="kw">let </span><span class="kw-2">mut </span>CurrentDir = CurrentExePath
-<a href=#189 id=189 data-nosnippet>189</a>		.parent()
-<a href=#190 id=190 data-nosnippet>190</a>		.context(<span class="string">"Executable must be in a directory (not the root)."</span>)<span class="question-mark">?</span>;
+<a href=#188 id=188 data-nosnippet>188</a>	</span><span class="kw">let </span><span class="kw-2">mut </span>CurrentDir = <a href="#185">CurrentExePath</a>
+<a href=#189 id=189 data-nosnippet>189</a>		.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>()
+<a href=#190 id=190 data-nosnippet>190</a>		.<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html#tymethod.context">context</a>(<span class="string">"Executable must be in a directory (not the root)."</span>)<span class="question-mark">?</span>;
 <a href=#191 id=191 data-nosnippet>191</a>
 <a href=#192 id=192 data-nosnippet>192</a>	<span class="kw">loop </span>{
 <a href=#193 id=193 data-nosnippet>193</a>		<span class="comment">// Check A: Does Source/Library.rs exist in current directory? → return current
 <a href=#194 id=194 data-nosnippet>194</a>		// directory
-<a href=#195 id=195 data-nosnippet>195</a>		</span><span class="kw">let </span>LibraryRsPath = CurrentDir.join(<span class="string">"Source"</span>).join(<span class="string">"Library.rs"</span>);
+<a href=#195 id=195 data-nosnippet>195</a>		</span><span class="kw">let </span>LibraryRsPath = <a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Source"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Library.rs"</span>);
 <a href=#196 id=196 data-nosnippet>196</a>
-<a href=#197 id=197 data-nosnippet>197</a>		<span class="kw">if </span>LibraryRsPath.exists() {
-<a href=#198 id=198 data-nosnippet>198</a>			<span class="kw">return </span><span class="prelude-val">Ok</span>(CurrentDir.to_path_buf());
+<a href=#197 id=197 data-nosnippet>197</a>		<span class="kw">if </span><a href="#195">LibraryRsPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
+<a href=#198 id=198 data-nosnippet>198</a>			<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
 <a href=#199 id=199 data-nosnippet>199</a>		}
 <a href=#200 id=200 data-nosnippet>200</a>
 <a href=#201 id=201 data-nosnippet>201</a>		<span class="comment">// Check B: Does a Cargo.toml exist in current directory with package.name =
 <a href=#202 id=202 data-nosnippet>202</a>		// "SideCar"? → return current directory
-<a href=#203 id=203 data-nosnippet>203</a>		</span><span class="kw">let </span>CargoTomlPath = CurrentDir.join(<span class="string">"Cargo.toml"</span>);
+<a href=#203 id=203 data-nosnippet>203</a>		</span><span class="kw">let </span>CargoTomlPath = <a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Cargo.toml"</span>);
 <a href=#204 id=204 data-nosnippet>204</a>
-<a href=#205 id=205 data-nosnippet>205</a>		<span class="kw">if </span>CargoTomlPath.exists() {
-<a href=#206 id=206 data-nosnippet>206</a>			<span class="kw">if let </span><span class="prelude-val">Ok</span>(CargoContents) = fs::read_to_string(<span class="kw-2">&amp;</span>CargoTomlPath) {
-<a href=#207 id=207 data-nosnippet>207</a>				<span class="kw">if let </span><span class="prelude-val">Ok</span>(Toml) = toml::from_str::&lt;toml::Value&gt;(<span class="kw-2">&amp;</span>CargoContents) {
-<a href=#208 id=208 data-nosnippet>208</a>					<span class="kw">if let </span><span class="prelude-val">Some</span>(Package) = Toml.get(<span class="string">"package"</span>) {
-<a href=#209 id=209 data-nosnippet>209</a>						<span class="kw">if let </span><span class="prelude-val">Some</span>(PackageName) = Package.get(<span class="string">"name"</span>).and_then(|v| v.as_str()) {
-<a href=#210 id=210 data-nosnippet>210</a>							<span class="kw">if </span>PackageName == <span class="string">"SideCar" </span>{
+<a href=#205 id=205 data-nosnippet>205</a>		<span class="kw">if </span><a href="#203">CargoTomlPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
+<a href=#206 id=206 data-nosnippet>206</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(CargoContents) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<span class="kw-2">&amp;</span><a href="#203">CargoTomlPath</a>) {
+<a href=#207 id=207 data-nosnippet>207</a>				<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Toml) = toml::from_str::&lt;toml::Value&gt;(<span class="kw-2">&amp;</span><a href="#206">CargoContents</a>) {
+<a href=#208 id=208 data-nosnippet>208</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Package) = <a href="#207">Toml</a>.get(<span class="string">"package"</span>) {
+<a href=#209 id=209 data-nosnippet>209</a>						<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(PackageName) = <a href="#208">Package</a>.get(<span class="string">"name"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|v| <a href="#209">v</a>.as_str()) {
+<a href=#210 id=210 data-nosnippet>210</a>							<span class="kw">if </span><a href="#209">PackageName</a> == <span class="string">"SideCar" </span>{
 <a href=#211 id=211 data-nosnippet>211</a>								<span class="comment">// Verify that Source subdirectory exists as additional confirmation.
-<a href=#212 id=212 data-nosnippet>212</a>								</span><span class="kw">let </span>SourceDir = CurrentDir.join(<span class="string">"Source"</span>);
+<a href=#212 id=212 data-nosnippet>212</a>								</span><span class="kw">let </span>SourceDir = <a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Source"</span>);
 <a href=#213 id=213 data-nosnippet>213</a>
-<a href=#214 id=214 data-nosnippet>214</a>								<span class="kw">if </span>SourceDir.exists() {
-<a href=#215 id=215 data-nosnippet>215</a>									<span class="kw">return </span><span class="prelude-val">Ok</span>(CurrentDir.to_path_buf());
+<a href=#214 id=214 data-nosnippet>214</a>								<span class="kw">if </span><a href="#212">SourceDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
+<a href=#215 id=215 data-nosnippet>215</a>									<span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.to_path_buf">to_path_buf</a>());
 <a href=#216 id=216 data-nosnippet>216</a>								}
 <a href=#217 id=217 data-nosnippet>217</a>							}
 <a href=#218 id=218 data-nosnippet>218</a>						}
@@ -224,20 +224,20 @@
 <a href=#224 id=224 data-nosnippet>224</a>		<span class="comment">// Check C: Does Element/SideCar/Cargo.toml exist relative to current directory
 <a href=#225 id=225 data-nosnippet>225</a>		// AND does it have package.name = "SideCar"? → return Element/SideCar
 <a href=#226 id=226 data-nosnippet>226</a>		// subdirectory path
-<a href=#227 id=227 data-nosnippet>227</a>		</span><span class="kw">let </span>SubdirCargoTomlPath = CurrentDir.join(<span class="string">"Element"</span>).join(<span class="string">"SideCar"</span>).join(<span class="string">"Cargo.toml"</span>);
+<a href=#227 id=227 data-nosnippet>227</a>		</span><span class="kw">let </span>SubdirCargoTomlPath = <a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Element"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"SideCar"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Cargo.toml"</span>);
 <a href=#228 id=228 data-nosnippet>228</a>
-<a href=#229 id=229 data-nosnippet>229</a>		<span class="kw">if </span>SubdirCargoTomlPath.exists() {
-<a href=#230 id=230 data-nosnippet>230</a>			<span class="kw">if let </span><span class="prelude-val">Ok</span>(CargoContents) = fs::read_to_string(<span class="kw-2">&amp;</span>SubdirCargoTomlPath) {
-<a href=#231 id=231 data-nosnippet>231</a>				<span class="kw">if let </span><span class="prelude-val">Ok</span>(Toml) = toml::from_str::&lt;toml::Value&gt;(<span class="kw-2">&amp;</span>CargoContents) {
-<a href=#232 id=232 data-nosnippet>232</a>					<span class="kw">if let </span><span class="prelude-val">Some</span>(Package) = Toml.get(<span class="string">"package"</span>) {
-<a href=#233 id=233 data-nosnippet>233</a>						<span class="kw">if let </span><span class="prelude-val">Some</span>(PackageName) = Package.get(<span class="string">"name"</span>).and_then(|v| v.as_str()) {
-<a href=#234 id=234 data-nosnippet>234</a>							<span class="kw">if </span>PackageName == <span class="string">"SideCar" </span>{
+<a href=#229 id=229 data-nosnippet>229</a>		<span class="kw">if </span><a href="#227">SubdirCargoTomlPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
+<a href=#230 id=230 data-nosnippet>230</a>			<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(CargoContents) = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<span class="kw-2">&amp;</span><a href="#227">SubdirCargoTomlPath</a>) {
+<a href=#231 id=231 data-nosnippet>231</a>				<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(Toml) = toml::from_str::&lt;toml::Value&gt;(<span class="kw-2">&amp;</span><a href="#230">CargoContents</a>) {
+<a href=#232 id=232 data-nosnippet>232</a>					<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Package) = <a href="#231">Toml</a>.get(<span class="string">"package"</span>) {
+<a href=#233 id=233 data-nosnippet>233</a>						<span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(PackageName) = <a href="#232">Package</a>.get(<span class="string">"name"</span>).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|v| <a href="#233">v</a>.as_str()) {
+<a href=#234 id=234 data-nosnippet>234</a>							<span class="kw">if </span><a href="#233">PackageName</a> == <span class="string">"SideCar" </span>{
 <a href=#235 id=235 data-nosnippet>235</a>								<span class="comment">// Verify that the Element/SideCar/Source subdirectory exists.
-<a href=#236 id=236 data-nosnippet>236</a>								</span><span class="kw">let </span>SourceDir = CurrentDir.join(<span class="string">"Element"</span>).join(<span class="string">"SideCar"</span>).join(<span class="string">"Source"</span>);
+<a href=#236 id=236 data-nosnippet>236</a>								</span><span class="kw">let </span>SourceDir = <a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Element"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"SideCar"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Source"</span>);
 <a href=#237 id=237 data-nosnippet>237</a>
-<a href=#238 id=238 data-nosnippet>238</a>								<span class="kw">if </span>SourceDir.exists() {
+<a href=#238 id=238 data-nosnippet>238</a>								<span class="kw">if </span><a href="#236">SourceDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
 <a href=#239 id=239 data-nosnippet>239</a>									<span class="comment">// Return the full path to the Element/SideCar subdirectory.
-<a href=#240 id=240 data-nosnippet>240</a>									</span><span class="kw">return </span><span class="prelude-val">Ok</span>(CurrentDir.join(<span class="string">"Element"</span>).join(<span class="string">"SideCar"</span>));
+<a href=#240 id=240 data-nosnippet>240</a>									</span><span class="kw">return </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(<a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"Element"</span>).<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"SideCar"</span>));
 <a href=#241 id=241 data-nosnippet>241</a>								}
 <a href=#242 id=242 data-nosnippet>242</a>							}
 <a href=#243 id=243 data-nosnippet>243</a>						}
@@ -247,16 +247,16 @@
 <a href=#247 id=247 data-nosnippet>247</a>		}
 <a href=#248 id=248 data-nosnippet>248</a>
 <a href=#249 id=249 data-nosnippet>249</a>		<span class="comment">// Move up one level.
-<a href=#250 id=250 data-nosnippet>250</a>		</span><span class="kw">let </span>NextDir = <span class="kw">match </span>CurrentDir.parent() {
-<a href=#251 id=251 data-nosnippet>251</a>			<span class="prelude-val">Some</span>(Parent) =&gt; Parent,
+<a href=#250 id=250 data-nosnippet>250</a>		</span><span class="kw">let </span>NextDir = <span class="kw">match </span><a href="#188">CurrentDir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.parent">parent</a>() {
+<a href=#251 id=251 data-nosnippet>251</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.Some">Some</a>(Parent) =&gt; <a href="#251">Parent</a>,
 <a href=#252 id=252 data-nosnippet>252</a>
-<a href=#253 id=253 data-nosnippet>253</a>			<span class="prelude-val">None </span>=&gt; <span class="kw">break</span>, <span class="comment">// Reached filesystem root without finding the project
+<a href=#253 id=253 data-nosnippet>253</a>			<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#variant.None">None</a> =&gt; <span class="kw">break</span>, <span class="comment">// Reached filesystem root without finding the project
 <a href=#254 id=254 data-nosnippet>254</a>		</span>};
 <a href=#255 id=255 data-nosnippet>255</a>
-<a href=#256 id=256 data-nosnippet>256</a>		CurrentDir = NextDir;
+<a href=#256 id=256 data-nosnippet>256</a>		<a href="#188">CurrentDir</a> = <a href="#250">NextDir</a>;
 <a href=#257 id=257 data-nosnippet>257</a>	}
 <a href=#258 id=258 data-nosnippet>258</a>
-<a href=#259 id=259 data-nosnippet>259</a>	<span class="prelude-val">Err</span>(<span class="macro">anyhow!</span>(
+<a href=#259 id=259 data-nosnippet>259</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(<a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow!</a>(
 <a href=#260 id=260 data-nosnippet>260</a>		<span class="string">"Could not determine the SideCar base directory. The executable should be built from within the SideCar crate \
 <a href=#261 id=261 data-nosnippet>261</a>		 or from the workspace containing Element/SideCar. Searched up from: {}"</span>,
 <a href=#262 id=262 data-nosnippet>262</a>		CurrentExePath.display()
@@ -265,8 +265,8 @@
 <a href=#265 id=265 data-nosnippet>265</a>
 <a href=#266 id=266 data-nosnippet>266</a><span class="doccomment">/// Defines the matrix of platforms to target. Each entry specifies how to
 <a href=#267 id=267 data-nosnippet>267</a>/// download and identify binaries for a specific architecture.
-<a href=#268 id=268 data-nosnippet>268</a></span><span class="kw">fn </span>GetPlatformMatrix() -&gt; Vec&lt;PlatformTarget&gt; {
-<a href=#269 id=269 data-nosnippet>269</a>	<span class="macro">vec!</span>[
+<a href=#268 id=268 data-nosnippet>268</a></span><span class="kw">fn </span><a href="../../SideCar/Download/fn.GetPlatformMatrix.html">GetPlatformMatrix</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="#33-44">PlatformTarget</a>&gt; {
+<a href=#269 id=269 data-nosnippet>269</a>	<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[
 <a href=#270 id=270 data-nosnippet>270</a>		PlatformTarget {
 <a href=#271 id=271 data-nosnippet>271</a>			DownloadIdentifier:<span class="string">"win-x64"</span>.to_string(),
 <a href=#272 id=272 data-nosnippet>272</a>
@@ -307,30 +307,30 @@
 <a href=#307 id=307 data-nosnippet>307</a>
 <a href=#308 id=308 data-nosnippet>308</a><span class="doccomment">/// Defines which sidecars and versions to fetch. This structure makes it
 <a href=#309 id=309 data-nosnippet>309</a>/// easy to add more sidecars like Deno in the future.
-<a href=#310 id=310 data-nosnippet>310</a></span><span class="kw">fn </span>GetSidecarsToFetch() -&gt; HashMap&lt;String, Vec&lt;String&gt;&gt; {
-<a href=#311 id=311 data-nosnippet>311</a>	<span class="kw">let </span><span class="kw-2">mut </span>Sidecars = HashMap::new();
+<a href=#310 id=310 data-nosnippet>310</a></span><span class="kw">fn </span><a href="../../SideCar/Download/fn.GetSidecarsToFetch.html">GetSidecarsToFetch</a>() -&gt; <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>, <a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt;&gt; {
+<a href=#311 id=311 data-nosnippet>311</a>	<span class="kw">let </span><span class="kw-2">mut </span>Sidecars = <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>::<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.new">new</a>();
 <a href=#312 id=312 data-nosnippet>312</a>
-<a href=#313 id=313 data-nosnippet>313</a>	Sidecars.insert(
-<a href=#314 id=314 data-nosnippet>314</a>		<span class="string">"NODE"</span>.to_string(),
-<a href=#315 id=315 data-nosnippet>315</a>		<span class="macro">vec!</span>[<span class="string">"24"</span>, <span class="string">"23"</span>, <span class="string">"22"</span>, <span class="string">"21"</span>, <span class="string">"20"</span>, <span class="string">"19"</span>, <span class="string">"18"</span>, <span class="string">"17"</span>, <span class="string">"16"</span>]
-<a href=#316 id=316 data-nosnippet>316</a>			.into_iter()
-<a href=#317 id=317 data-nosnippet>317</a>			.map(String::from)
-<a href=#318 id=318 data-nosnippet>318</a>			.collect(),
+<a href=#313 id=313 data-nosnippet>313</a>	<a href="#311">Sidecars</a>.<a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html#method.insert">insert</a>(
+<a href=#314 id=314 data-nosnippet>314</a>		<span class="string">"NODE"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>(),
+<a href=#315 id=315 data-nosnippet>315</a>		<a href="https://doc.rust-lang.org/nightly/alloc/macro.vec.html">vec!</a>[<span class="string">"24"</span>, <span class="string">"23"</span>, <span class="string">"22"</span>, <span class="string">"21"</span>, <span class="string">"20"</span>, <span class="string">"19"</span>, <span class="string">"18"</span>, <span class="string">"17"</span>, <span class="string">"16"</span>]
+<a href=#316 id=316 data-nosnippet>316</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>()
+<a href=#317 id=317 data-nosnippet>317</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.map">map</a>(<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>::<a href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from">from</a>)
+<a href=#318 id=318 data-nosnippet>318</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>(),
 <a href=#319 id=319 data-nosnippet>319</a>	);
 <a href=#320 id=320 data-nosnippet>320</a>
-<a href=#321 id=321 data-nosnippet>321</a>	Sidecars
+<a href=#321 id=321 data-nosnippet>321</a>	<a href="#311">Sidecars</a>
 <a href=#322 id=322 data-nosnippet>322</a>}
 <a href=#323 id=323 data-nosnippet>323</a>
 <a href=#324 id=324 data-nosnippet>324</a><span class="comment">// --- Helper Functions ---
 <a href=#325 id=325 data-nosnippet>325</a>
 <a href=#326 id=326 data-nosnippet>326</a></span><span class="doccomment">/// Environment variable for setting the log level.
-<a href=#327 id=327 data-nosnippet>327</a></span><span class="kw">pub const </span>LogEnv:<span class="kw-2">&amp;</span>str = <span class="string">"RUST_LOG"</span>;
+<a href=#327 id=327 data-nosnippet>327</a></span><span class="kw">pub const </span><a href="../../SideCar/Download/constant.LogEnv.html">LogEnv</a>:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <span class="string">"RUST_LOG"</span>;
 <a href=#328 id=328 data-nosnippet>328</a>
 <a href=#329 id=329 data-nosnippet>329</a><span class="doccomment">/// Manages the `.gitattributes` file to ensure binaries are tracked by Git LFS.
 <a href=#330 id=330 data-nosnippet>330</a>/// If the file does not exist, it is created. If it exists, missing rules are
 <a href=#331 id=331 data-nosnippet>331</a>/// appended.
-<a href=#332 id=332 data-nosnippet>332</a></span><span class="kw">fn </span>UpdateGitattributes(BaseDirectory:<span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-<a href=#333 id=333 data-nosnippet>333</a>	<span class="kw">const </span>GITATTRIBUTES_HEADER:<span class="kw-2">&amp;</span>str = <span class="string">r#"################################################################################
+<a href=#332 id=332 data-nosnippet>332</a></span><span class="kw">fn </span><a href="../../SideCar/Download/fn.UpdateGitattributes.html">UpdateGitattributes</a>(BaseDirectory:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; {
+<a href=#333 id=333 data-nosnippet>333</a>	<span class="kw">const </span>GITATTRIBUTES_HEADER:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a> = <span class="string">r#"################################################################################
 <a href=#334 id=334 data-nosnippet>334</a># Git LFS configuration for vendored Tauri Sidecars
 <a href=#335 id=335 data-nosnippet>335</a>#
 <a href=#336 id=336 data-nosnippet>336</a># This file tells Git to use LFS (Large File Storage) for the heavy binary
@@ -346,7 +346,7 @@
 <a href=#346 id=346 data-nosnippet>346</a>
 <a href=#347 id=347 data-nosnippet>347</a># --- Rule Definitions ---"#</span>;
 <a href=#348 id=348 data-nosnippet>348</a>
-<a href=#349 id=349 data-nosnippet>349</a>	<span class="kw">const </span>GITATTRIBUTES_RULES:<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span>str] = <span class="kw-2">&amp;</span>[
+<a href=#349 id=349 data-nosnippet>349</a>	<span class="kw">const </span>GITATTRIBUTES_RULES:<span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>] = <span class="kw-2">&amp;</span>[
 <a href=#350 id=350 data-nosnippet>350</a>		<span class="string">"**/NODE/**/bin/node filter=lfs diff=lfs merge=lfs -text"</span>,
 <a href=#351 id=351 data-nosnippet>351</a>		<span class="string">"**/NODE/**/node.exe filter=lfs diff=lfs merge=lfs -text"</span>,
 <a href=#352 id=352 data-nosnippet>352</a>		<span class="string">"**/NODE/**/bin/npm filter=lfs diff=lfs merge=lfs -text"</span>,
@@ -371,57 +371,57 @@
 <a href=#371 id=371 data-nosnippet>371</a>		<span class="string">"Target/release/Download filter=lfs diff=lfs merge=lfs -text"</span>,
 <a href=#372 id=372 data-nosnippet>372</a>	];
 <a href=#373 id=373 data-nosnippet>373</a>
-<a href=#374 id=374 data-nosnippet>374</a>	<span class="kw">let </span>GitattributesPath = BaseDirectory.join(<span class="string">".gitattributes"</span>);
+<a href=#374 id=374 data-nosnippet>374</a>	<span class="kw">let </span>GitattributesPath = <a href="#332">BaseDirectory</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">".gitattributes"</span>);
 <a href=#375 id=375 data-nosnippet>375</a>
-<a href=#376 id=376 data-nosnippet>376</a>	<span class="kw">if </span>!GitattributesPath.exists() {
-<a href=#377 id=377 data-nosnippet>377</a>		<span class="macro">info!</span>(<span class="string">"Creating .gitattributes file to track binaries with Git LFS."</span>);
+<a href=#376 id=376 data-nosnippet>376</a>	<span class="kw">if </span>!<a href="#374">GitattributesPath</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.exists">exists</a>() {
+<a href=#377 id=377 data-nosnippet>377</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"Creating .gitattributes file to track binaries with Git LFS."</span>);
 <a href=#378 id=378 data-nosnippet>378</a>
-<a href=#379 id=379 data-nosnippet>379</a>		<span class="kw">let </span><span class="kw-2">mut </span>File = File::create(<span class="kw-2">&amp;</span>GitattributesPath)
-<a href=#380 id=380 data-nosnippet>380</a>			.with_context(|| <span class="macro">format!</span>(<span class="string">"Failed to create .gitattributes file at {:?}"</span>, GitattributesPath))<span class="question-mark">?</span>;
+<a href=#379 id=379 data-nosnippet>379</a>		<span class="kw">let </span><span class="kw-2">mut </span>File = <a href="https://doc.rust-lang.org/nightly/std/fs/struct.File.html">File</a>::<a href="https://doc.rust-lang.org/nightly/std/fs/struct.File.html#method.create">create</a>(<span class="kw-2">&amp;</span><a href="#374">GitattributesPath</a>)
+<a href=#380 id=380 data-nosnippet>380</a>			.<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html#tymethod.with_context">with_context</a>(|| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to create .gitattributes file at {:?}"</span>, GitattributesPath))<span class="question-mark">?</span>;
 <a href=#381 id=381 data-nosnippet>381</a>
-<a href=#382 id=382 data-nosnippet>382</a>		<span class="macro">writeln!</span>(File, <span class="string">"{}"</span>, GITATTRIBUTES_HEADER)<span class="question-mark">?</span>;
+<a href=#382 id=382 data-nosnippet>382</a>		<a href="https://doc.rust-lang.org/nightly/core/macro.writeln.html">writeln!</a>(<a href="#379">File</a>, <span class="string">"{}"</span>, GITATTRIBUTES_HEADER)<span class="question-mark">?</span>;
 <a href=#383 id=383 data-nosnippet>383</a>
 <a href=#384 id=384 data-nosnippet>384</a>		<span class="kw">for </span>Rule <span class="kw">in </span>GITATTRIBUTES_RULES {
 <a href=#385 id=385 data-nosnippet>385</a>			<span class="comment">// This will write a blank line for any empty strings in the array
 <a href=#386 id=386 data-nosnippet>386</a>			</span><span class="macro">writeln!</span>(File, <span class="string">"{}"</span>, Rule)<span class="question-mark">?</span>;
 <a href=#387 id=387 data-nosnippet>387</a>		}
 <a href=#388 id=388 data-nosnippet>388</a>	} <span class="kw">else </span>{
-<a href=#389 id=389 data-nosnippet>389</a>		<span class="macro">info!</span>(<span class="string">".gitattributes file found. Verifying LFS rules..."</span>);
+<a href=#389 id=389 data-nosnippet>389</a>		<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">".gitattributes file found. Verifying LFS rules..."</span>);
 <a href=#390 id=390 data-nosnippet>390</a>
-<a href=#391 id=391 data-nosnippet>391</a>		<span class="kw">let </span>Content = fs::read_to_string(<span class="kw-2">&amp;</span>GitattributesPath)<span class="question-mark">?</span>;
+<a href=#391 id=391 data-nosnippet>391</a>		<span class="kw">let </span>Content = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.read_to_string.html">read_to_string</a>(<span class="kw-2">&amp;</span><a href="#374">GitattributesPath</a>)<span class="question-mark">?</span>;
 <a href=#392 id=392 data-nosnippet>392</a>
-<a href=#393 id=393 data-nosnippet>393</a>		<span class="kw">let </span>MissingRules:Vec&lt;<span class="kw">_</span>&gt; = GITATTRIBUTES_RULES
-<a href=#394 id=394 data-nosnippet>394</a>			.iter()
+<a href=#393 id=393 data-nosnippet>393</a>		<span class="kw">let </span>MissingRules:<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html">Vec</a>&lt;<span class="kw">_</span>&gt; = <a href="#349-372">GITATTRIBUTES_RULES</a>
+<a href=#394 id=394 data-nosnippet>394</a>			.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()
 <a href=#395 id=395 data-nosnippet>395</a>			<span class="comment">// Filter out blank lines and comments from the check
-<a href=#396 id=396 data-nosnippet>396</a>			</span>.filter(|rule| !rule.is_empty() &amp;&amp; !rule.starts_with(<span class="string">'#'</span>))
-<a href=#397 id=397 data-nosnippet>397</a>			.filter(|rule| !Content.contains(<span class="kw-2">*</span>rule))
-<a href=#398 id=398 data-nosnippet>398</a>			.collect();
+<a href=#396 id=396 data-nosnippet>396</a>			</span>.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter">filter</a>(|rule| !<a href="#396">rule</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.is_empty">is_empty</a>() &amp;&amp; !<a href="#396">rule</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="string">'#'</span>))
+<a href=#397 id=397 data-nosnippet>397</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.filter">filter</a>(|rule| !<a href="#391">Content</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.contains">contains</a>(<span class="kw-2">*</span><a href="#397">rule</a>))
+<a href=#398 id=398 data-nosnippet>398</a>			.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.collect">collect</a>();
 <a href=#399 id=399 data-nosnippet>399</a>
-<a href=#400 id=400 data-nosnippet>400</a>		<span class="kw">if </span>!MissingRules.is_empty() {
-<a href=#401 id=401 data-nosnippet>401</a>			<span class="macro">info!</span>(<span class="string">"Adding {} missing LFS rules to .gitattributes."</span>, MissingRules.len());
+<a href=#400 id=400 data-nosnippet>400</a>		<span class="kw">if </span>!<a href="#393">MissingRules</a>.<a href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html#method.is_empty">is_empty</a>() {
+<a href=#401 id=401 data-nosnippet>401</a>			<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"Adding {} missing LFS rules to .gitattributes."</span>, MissingRules.len());
 <a href=#402 id=402 data-nosnippet>402</a>
-<a href=#403 id=403 data-nosnippet>403</a>			<span class="kw">let </span><span class="kw-2">mut </span>File = fs::OpenOptions::new()
-<a href=#404 id=404 data-nosnippet>404</a>				.append(<span class="bool-val">true</span>)
-<a href=#405 id=405 data-nosnippet>405</a>				.open(<span class="kw-2">&amp;</span>GitattributesPath)
-<a href=#406 id=406 data-nosnippet>406</a>				.with_context(|| <span class="macro">format!</span>(<span class="string">"Failed to open .gitattributes for appending at {:?}"</span>, GitattributesPath))<span class="question-mark">?</span>;
+<a href=#403 id=403 data-nosnippet>403</a>			<span class="kw">let </span><span class="kw-2">mut </span>File = fs::<a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html">OpenOptions</a>::<a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.new">new</a>()
+<a href=#404 id=404 data-nosnippet>404</a>				.<a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.append">append</a>(<span class="bool-val">true</span>)
+<a href=#405 id=405 data-nosnippet>405</a>				.<a href="https://doc.rust-lang.org/nightly/std/fs/struct.OpenOptions.html#method.open">open</a>(<span class="kw-2">&amp;</span><a href="#374">GitattributesPath</a>)
+<a href=#406 id=406 data-nosnippet>406</a>				.<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html#tymethod.with_context">with_context</a>(|| <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"Failed to open .gitattributes for appending at {:?}"</span>, GitattributesPath))<span class="question-mark">?</span>;
 <a href=#407 id=407 data-nosnippet>407</a>
-<a href=#408 id=408 data-nosnippet>408</a>			<span class="macro">writeln!</span>(File, <span class="string">"\n\n# --- Rules Automatically Added by Vendor Script ---"</span>)<span class="question-mark">?</span>;
+<a href=#408 id=408 data-nosnippet>408</a>			<a href="https://doc.rust-lang.org/nightly/core/macro.writeln.html">writeln!</a>(<a href="#403">File</a>, <span class="string">"\n\n# --- Rules Automatically Added by Vendor Script ---"</span>)<span class="question-mark">?</span>;
 <a href=#409 id=409 data-nosnippet>409</a>
 <a href=#410 id=410 data-nosnippet>410</a>			<span class="kw">for </span>Rule <span class="kw">in </span>MissingRules {
 <a href=#411 id=411 data-nosnippet>411</a>				<span class="macro">writeln!</span>(File, <span class="string">"{}"</span>, Rule)<span class="question-mark">?</span>;
 <a href=#412 id=412 data-nosnippet>412</a>			}
 <a href=#413 id=413 data-nosnippet>413</a>		} <span class="kw">else </span>{
-<a href=#414 id=414 data-nosnippet>414</a>			<span class="macro">info!</span>(<span class="string">".gitattributes is already up to date."</span>);
+<a href=#414 id=414 data-nosnippet>414</a>			<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">".gitattributes is already up to date."</span>);
 <a href=#415 id=415 data-nosnippet>415</a>		}
 <a href=#416 id=416 data-nosnippet>416</a>	}
 <a href=#417 id=417 data-nosnippet>417</a>
-<a href=#418 id=418 data-nosnippet>418</a>	<span class="prelude-val">Ok</span>(())
+<a href=#418 id=418 data-nosnippet>418</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#419 id=419 data-nosnippet>419</a>}
 <a href=#420 id=420 data-nosnippet>420</a>
 <a href=#421 id=421 data-nosnippet>421</a><span class="comment">// --- Core Logic ---
 <a href=#422 id=422 data-nosnippet>422</a>
 <a href=#423 id=423 data-nosnippet>423</a></span><span class="doccomment">/// Fetches the official Node.js versions index from nodejs.org.
-<a href=#424 id=424 data-nosnippet>424</a></span><span class="kw">async fn </span>FetchNodeVersions(Client:<span class="kw-2">&amp;</span>Client) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;NodeVersionInfo&gt;&gt; {
+<a href=#424 id=424 data-nosnippet>424</a></span><span class="kw">async fn </span><a href="../../SideCar/Download/fn.FetchNodeVersions.html">FetchNodeVersions</a>(Client:<span class="kw-2">&amp;</span>Client) -&gt; <span class="prelude-ty">Result</span>&lt;Vec&lt;NodeVersionInfo&gt;&gt; {
 <a href=#425 id=425 data-nosnippet>425</a>	<span class="macro">info!</span>(<span class="string">"Fetching Node.js version index for resolving versions..."</span>);
 <a href=#426 id=426 data-nosnippet>426</a>
 <a href=#427 id=427 data-nosnippet>427</a>	<span class="kw">let </span>Response = Client
@@ -444,17 +444,17 @@
 <a href=#444 id=444 data-nosnippet>444</a>
 <a href=#445 id=445 data-nosnippet>445</a><span class="doccomment">/// Resolves a major version string (e.g., "22") to the latest full patch
 <a href=#446 id=446 data-nosnippet>446</a>/// version (e.g., "v22.3.0") using the fetched version index.
-<a href=#447 id=447 data-nosnippet>447</a></span><span class="kw">fn </span>ResolveLatestPatchVersion(MajorVersion:<span class="kw-2">&amp;</span>str, AllVersions:<span class="kw-2">&amp;</span>[NodeVersionInfo]) -&gt; <span class="prelude-ty">Option</span>&lt;String&gt; {
-<a href=#448 id=448 data-nosnippet>448</a>	<span class="kw">let </span>VersionPrefix = <span class="macro">format!</span>(<span class="string">"v{}."</span>, MajorVersion);
+<a href=#447 id=447 data-nosnippet>447</a></span><span class="kw">fn </span><a href="../../SideCar/Download/fn.ResolveLatestPatchVersion.html">ResolveLatestPatchVersion</a>(MajorVersion:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, AllVersions:<span class="kw-2">&amp;</span>[<a href="#58-60">NodeVersionInfo</a>]) -&gt; <a class="prelude-ty" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html">Option</a>&lt;<a href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html">String</a>&gt; {
+<a href=#448 id=448 data-nosnippet>448</a>	<span class="kw">let </span>VersionPrefix = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"v{}."</span>, MajorVersion);
 <a href=#449 id=449 data-nosnippet>449</a>
-<a href=#450 id=450 data-nosnippet>450</a>	AllVersions
-<a href=#451 id=451 data-nosnippet>451</a>		.iter()
-<a href=#452 id=452 data-nosnippet>452</a>		.find(|v| v.version.starts_with(<span class="kw-2">&amp;</span>VersionPrefix))
-<a href=#453 id=453 data-nosnippet>453</a>		.map(|v| v.version.clone())
+<a href=#450 id=450 data-nosnippet>450</a>	<a href="#447">AllVersions</a>
+<a href=#451 id=451 data-nosnippet>451</a>		.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()
+<a href=#452 id=452 data-nosnippet>452</a>		.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#method.find">find</a>(|v| <a href="#452">v</a>.version.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.str.html#method.starts_with">starts_with</a>(<span class="kw-2">&amp;</span><a href="#448">VersionPrefix</a>))
+<a href=#453 id=453 data-nosnippet>453</a>		.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|v| <a href="#453">v</a>.version.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>())
 <a href=#454 id=454 data-nosnippet>454</a>}
 <a href=#455 id=455 data-nosnippet>455</a>
 <a href=#456 id=456 data-nosnippet>456</a><span class="doccomment">/// Downloads a file from a URL to a specified path.
-<a href=#457 id=457 data-nosnippet>457</a></span><span class="kw">async fn </span>DownloadFile(Client:<span class="kw-2">&amp;</span>Client, URL:<span class="kw-2">&amp;</span>str, DestinationPath:<span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#457 id=457 data-nosnippet>457</a></span><span class="kw">async fn </span><a href="../../SideCar/Download/fn.DownloadFile.html">DownloadFile</a>(Client:<span class="kw-2">&amp;</span>Client, URL:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>, DestinationPath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#458 id=458 data-nosnippet>458</a>	<span class="kw">let </span><span class="kw-2">mut </span>Response = Client.get(URL).send().<span class="kw">await</span><span class="question-mark">?</span>.error_for_status()<span class="question-mark">?</span>;
 <a href=#459 id=459 data-nosnippet>459</a>
 <a href=#460 id=460 data-nosnippet>460</a>	<span class="kw">let </span><span class="kw-2">mut </span>DestinationFile =
@@ -471,35 +471,35 @@
 <a href=#471 id=471 data-nosnippet>471</a><span class="doccomment">/// Extracts the contents of a downloaded archive to a target directory.
 <a href=#472 id=472 data-nosnippet>472</a>/// This function now performs a full extraction to ensure a complete
 <a href=#473 id=473 data-nosnippet>473</a>/// distribution.
-<a href=#474 id=474 data-nosnippet>474</a></span><span class="kw">fn </span>ExtractArchive(ArchiveType:<span class="kw-2">&amp;</span>ArchiveType, ArchivePath:<span class="kw-2">&amp;</span>Path, ExtractionDirectory:<span class="kw-2">&amp;</span>Path) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
-<a href=#475 id=475 data-nosnippet>475</a>	<span class="macro">info!</span>(<span class="string">"Performing a full extraction of the archive..."</span>);
+<a href=#474 id=474 data-nosnippet>474</a></span><span class="kw">fn </span><a href="../../SideCar/Download/fn.ExtractArchive.html">ExtractArchive</a>(ArchiveType:<span class="kw-2">&amp;</span><a href="#49-53">ArchiveType</a>, ArchivePath:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, ExtractionDirectory:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>) -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; {
+<a href=#475 id=475 data-nosnippet>475</a>	<a href="https://docs.rs/log/0.4.29/log/macro.info.html">info!</a>(<span class="string">"Performing a full extraction of the archive..."</span>);
 <a href=#476 id=476 data-nosnippet>476</a>
-<a href=#477 id=477 data-nosnippet>477</a>	<span class="kw">match </span>ArchiveType {
-<a href=#478 id=478 data-nosnippet>478</a>		ArchiveType::Zip =&gt; {
-<a href=#479 id=479 data-nosnippet>479</a>			<span class="kw">let </span>File = File::open(ArchivePath)<span class="question-mark">?</span>;
+<a href=#477 id=477 data-nosnippet>477</a>	<span class="kw">match </span><a href="#474">ArchiveType</a> {
+<a href=#478 id=478 data-nosnippet>478</a>		ArchiveType::<a href="#50">Zip</a> =&gt; {
+<a href=#479 id=479 data-nosnippet>479</a>			<span class="kw">let </span>File = <a href="https://doc.rust-lang.org/nightly/std/fs/struct.File.html">File</a>::<a href="https://doc.rust-lang.org/nightly/std/fs/struct.File.html#method.open">open</a>(<a href="#474">ArchivePath</a>)<span class="question-mark">?</span>;
 <a href=#480 id=480 data-nosnippet>480</a>
-<a href=#481 id=481 data-nosnippet>481</a>			<span class="kw">let </span><span class="kw-2">mut </span>Archive = zip::ZipArchive::new(File)<span class="question-mark">?</span>;
+<a href=#481 id=481 data-nosnippet>481</a>			<span class="kw">let </span><span class="kw-2">mut </span>Archive = zip::ZipArchive::new(<a href="#479">File</a>)<span class="question-mark">?</span>;
 <a href=#482 id=482 data-nosnippet>482</a>
-<a href=#483 id=483 data-nosnippet>483</a>			Archive.extract(ExtractionDirectory)<span class="question-mark">?</span>;
+<a href=#483 id=483 data-nosnippet>483</a>			<a href="#481">Archive</a>.extract(<a href="#474">ExtractionDirectory</a>)<span class="question-mark">?</span>;
 <a href=#484 id=484 data-nosnippet>484</a>		},
 <a href=#485 id=485 data-nosnippet>485</a>
-<a href=#486 id=486 data-nosnippet>486</a>		ArchiveType::TarGz =&gt; {
-<a href=#487 id=487 data-nosnippet>487</a>			<span class="kw">let </span>File = File::open(ArchivePath)<span class="question-mark">?</span>;
+<a href=#486 id=486 data-nosnippet>486</a>		ArchiveType::<a href="#52">TarGz</a> =&gt; {
+<a href=#487 id=487 data-nosnippet>487</a>			<span class="kw">let </span>File = <a href="https://doc.rust-lang.org/nightly/std/fs/struct.File.html">File</a>::<a href="https://doc.rust-lang.org/nightly/std/fs/struct.File.html#method.open">open</a>(<a href="#474">ArchivePath</a>)<span class="question-mark">?</span>;
 <a href=#488 id=488 data-nosnippet>488</a>
-<a href=#489 id=489 data-nosnippet>489</a>			<span class="kw">let </span>Decompressor = flate2::read::GzDecoder::new(File);
+<a href=#489 id=489 data-nosnippet>489</a>			<span class="kw">let </span>Decompressor = flate2::read::<a href="https://docs.rs/flate2/0.2/flate2/gz/read/struct.GzDecoder.html">GzDecoder</a>::<a href="https://docs.rs/flate2/0.2/flate2/gz/read/struct.GzDecoder.html#method.new">new</a>(<a href="#487">File</a>);
 <a href=#490 id=490 data-nosnippet>490</a>
-<a href=#491 id=491 data-nosnippet>491</a>			<span class="kw">let </span><span class="kw-2">mut </span>Archive = tar::Archive::new(Decompressor);
+<a href=#491 id=491 data-nosnippet>491</a>			<span class="kw">let </span><span class="kw-2">mut </span>Archive = tar::<a href="https://docs.rs/tar/0.4/tar/archive/struct.Archive.html">Archive</a>::<a href="https://docs.rs/tar/0.4/tar/archive/struct.Archive.html#method.new">new</a>(<a href="#489">Decompressor</a>);
 <a href=#492 id=492 data-nosnippet>492</a>
-<a href=#493 id=493 data-nosnippet>493</a>			Archive.unpack(ExtractionDirectory)<span class="question-mark">?</span>;
+<a href=#493 id=493 data-nosnippet>493</a>			<a href="#491">Archive</a>.<a href="https://docs.rs/tar/0.4/tar/archive/struct.Archive.html#method.unpack">unpack</a>(<a href="#474">ExtractionDirectory</a>)<span class="question-mark">?</span>;
 <a href=#494 id=494 data-nosnippet>494</a>		},
 <a href=#495 id=495 data-nosnippet>495</a>	}
 <a href=#496 id=496 data-nosnippet>496</a>
-<a href=#497 id=497 data-nosnippet>497</a>	<span class="prelude-val">Ok</span>(())
+<a href=#497 id=497 data-nosnippet>497</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
 <a href=#498 id=498 data-nosnippet>498</a>}
 <a href=#499 id=499 data-nosnippet>499</a>
 <a href=#500 id=500 data-nosnippet>500</a><span class="doccomment">/// The main asynchronous function for processing a single download task.
 <a href=#501 id=501 data-nosnippet>501</a>/// This function is designed to be run concurrently for multiple tasks.
-<a href=#502 id=502 data-nosnippet>502</a></span><span class="kw">async fn </span>ProcessDownloadTask(Task:DownloadTask, Client:Client, Cache:Arc&lt;Mutex&lt;DownloadCache&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#502 id=502 data-nosnippet>502</a></span><span class="kw">async fn </span><a href="../../SideCar/Download/fn.ProcessDownloadTask.html">ProcessDownloadTask</a>(Task:<a href="#66-93">DownloadTask</a>, Client:Client, Cache:<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>&lt;<a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>&lt;<a href="#100-105">DownloadCache</a>&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
 <a href=#503 id=503 data-nosnippet>503</a>	<span class="comment">// Create the temporary directory inside the designated "Temporary" subfolder.
 <a href=#504 id=504 data-nosnippet>504</a>	</span><span class="kw">let </span>TempDirectory = Builder::new()
 <a href=#505 id=505 data-nosnippet>505</a>		.prefix(<span class="string">"SideCar-Download-"</span>)
@@ -582,34 +582,34 @@
 <a href=#582 id=582 data-nosnippet>582</a>}
 <a href=#583 id=583 data-nosnippet>583</a>
 <a href=#584 id=584 data-nosnippet>584</a><span class="doccomment">/// Sets up the global logger for the application.
-<a href=#585 id=585 data-nosnippet>585</a></span><span class="kw">pub fn </span>Logger() {
-<a href=#586 id=586 data-nosnippet>586</a>	<span class="kw">let </span>LevelText = env::var(LogEnv).unwrap_or_else(|<span class="kw">_</span>| <span class="string">"info"</span>.to_string());
+<a href=#585 id=585 data-nosnippet>585</a></span><span class="kw">pub fn </span><a href="../../SideCar/Download/fn.Logger.html">Logger</a>() {
+<a href=#586 id=586 data-nosnippet>586</a>	<span class="kw">let </span>LevelText = env::<a href="https://doc.rust-lang.org/nightly/std/env/fn.var.html">var</a>(<a href="#327">LogEnv</a>).<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or_else">unwrap_or_else</a>(|<span class="kw">_</span>| <span class="string">"info"</span>.<a href="https://doc.rust-lang.org/nightly/alloc/string/trait.ToString.html#tymethod.to_string">to_string</a>());
 <a href=#587 id=587 data-nosnippet>587</a>
-<a href=#588 id=588 data-nosnippet>588</a>	<span class="kw">let </span>LogLevel = LevelText.parse::&lt;LevelFilter&gt;().unwrap_or(LevelFilter::Info);
+<a href=#588 id=588 data-nosnippet>588</a>	<span class="kw">let </span>LogLevel = <a href="#586">LevelText</a>.parse::&lt;<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html">LevelFilter</a>&gt;().<a href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#method.unwrap_or">unwrap_or</a>(LevelFilter::<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html#variant.Info">Info</a>);
 <a href=#589 id=589 data-nosnippet>589</a>
 <a href=#590 id=590 data-nosnippet>590</a>	env_logger::Builder::new()
-<a href=#591 id=591 data-nosnippet>591</a>		.filter_level(LogLevel)
+<a href=#591 id=591 data-nosnippet>591</a>		.filter_level(<a href="#588">LogLevel</a>)
 <a href=#592 id=592 data-nosnippet>592</a>		.format(|Buffer, Record| {
-<a href=#593 id=593 data-nosnippet>593</a>			<span class="kw">let </span>LevelStyle = <span class="kw">match </span>Record.level() {
-<a href=#594 id=594 data-nosnippet>594</a>				log::Level::Error =&gt; <span class="string">"ERROR"</span>.red().bold(),
+<a href=#593 id=593 data-nosnippet>593</a>			<span class="kw">let </span>LevelStyle = <span class="kw">match </span><a href="#592">Record</a>.<a href="https://docs.rs/log/0.4.29/log/struct.Record.html#method.level">level</a>() {
+<a href=#594 id=594 data-nosnippet>594</a>				log::Level::<a href="https://docs.rs/log/0.4.29/log/enum.Level.html#variant.Error">Error</a> =&gt; <span class="string">"ERROR"</span>.red().bold(),
 <a href=#595 id=595 data-nosnippet>595</a>
-<a href=#596 id=596 data-nosnippet>596</a>				log::Level::Warn =&gt; <span class="string">"WARN"</span>.yellow().bold(),
+<a href=#596 id=596 data-nosnippet>596</a>				log::Level::<a href="https://docs.rs/log/0.4.29/log/enum.Level.html#variant.Warn">Warn</a> =&gt; <span class="string">"WARN"</span>.yellow().bold(),
 <a href=#597 id=597 data-nosnippet>597</a>
-<a href=#598 id=598 data-nosnippet>598</a>				log::Level::Info =&gt; <span class="string">"INFO"</span>.green(),
+<a href=#598 id=598 data-nosnippet>598</a>				log::Level::<a href="https://docs.rs/log/0.4.29/log/enum.Level.html#variant.Info">Info</a> =&gt; <span class="string">"INFO"</span>.green(),
 <a href=#599 id=599 data-nosnippet>599</a>
-<a href=#600 id=600 data-nosnippet>600</a>				log::Level::Debug =&gt; <span class="string">"DEBUG"</span>.blue(),
+<a href=#600 id=600 data-nosnippet>600</a>				log::Level::<a href="https://docs.rs/log/0.4.29/log/enum.Level.html#variant.Debug">Debug</a> =&gt; <span class="string">"DEBUG"</span>.blue(),
 <a href=#601 id=601 data-nosnippet>601</a>
-<a href=#602 id=602 data-nosnippet>602</a>				log::Level::Trace =&gt; <span class="string">"TRACE"</span>.magenta(),
+<a href=#602 id=602 data-nosnippet>602</a>				log::Level::<a href="https://docs.rs/log/0.4.29/log/enum.Level.html#variant.Trace">Trace</a> =&gt; <span class="string">"TRACE"</span>.magenta(),
 <a href=#603 id=603 data-nosnippet>603</a>			};
 <a href=#604 id=604 data-nosnippet>604</a>
-<a href=#605 id=605 data-nosnippet>605</a>			<span class="macro">writeln!</span>(Buffer, <span class="string">"[{}] [{}]: {}"</span>, <span class="string">"Download"</span>.red(), LevelStyle, Record.args())
+<a href=#605 id=605 data-nosnippet>605</a>			<a href="https://doc.rust-lang.org/nightly/core/macro.writeln.html">writeln!</a>(<a href="#592">Buffer</a>, <span class="string">"[{}] [{}]: {}"</span>, <span class="string">"Download"</span>.red(), LevelStyle, Record.args())
 <a href=#606 id=606 data-nosnippet>606</a>		})
 <a href=#607 id=607 data-nosnippet>607</a>		.parse_default_env()
 <a href=#608 id=608 data-nosnippet>608</a>		.init();
 <a href=#609 id=609 data-nosnippet>609</a>}
 <a href=#610 id=610 data-nosnippet>610</a>
 <a href=#611 id=611 data-nosnippet>611</a><span class="attr">#[tokio::main]
-<a href=#612 id=612 data-nosnippet>612</a></span><span class="kw">pub async fn </span>Fn() -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<a href=#612 id=612 data-nosnippet>612</a></span><span class="kw">pub async fn </span><a href="../../SideCar/Download/fn.Fn.html">Fn</a>() -&gt; <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; {
 <a href=#613 id=613 data-nosnippet>613</a>	Logger();
 <a href=#614 id=614 data-nosnippet>614</a>
 <a href=#615 id=615 data-nosnippet>615</a>	<span class="macro">info!</span>(<span class="string">"Starting Universal Sidecar vendoring process..."</span>);
@@ -788,32 +788,32 @@
 <a href=#788 id=788 data-nosnippet>788</a>
 <a href=#789 id=789 data-nosnippet>789</a><span class="doccomment">/// Main executable function.
 <a href=#790 id=790 data-nosnippet>790</a></span><span class="attr">#[allow(unused)]
-<a href=#791 id=791 data-nosnippet>791</a></span><span class="kw">fn </span>main() {
+<a href=#791 id=791 data-nosnippet>791</a></span><span class="kw">fn </span><a href="../../SideCar/Download/fn.main.html">main</a>() {
 <a href=#792 id=792 data-nosnippet>792</a>	<span class="comment">// We use a block here to handle the Result from Fn.
-<a href=#793 id=793 data-nosnippet>793</a>	</span><span class="kw">if let </span><span class="prelude-val">Err</span>(Error) = Fn() {
+<a href=#793 id=793 data-nosnippet>793</a>	</span><span class="kw">if let </span><a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Err">Err</a>(Error) = <a href="#612-787">Fn</a>() {
 <a href=#794 id=794 data-nosnippet>794</a>		<span class="comment">// The logger should already be initialized by Fn, so we can use it.
-<a href=#795 id=795 data-nosnippet>795</a>		</span><span class="macro">error!</span>(<span class="string">"The application encountered a fatal error: {}"</span>, Error);
+<a href=#795 id=795 data-nosnippet>795</a>		</span><a href="https://docs.rs/log/0.4.29/log/macro.error.html">error!</a>(<span class="string">"The application encountered a fatal error: {}"</span>, Error);
 <a href=#796 id=796 data-nosnippet>796</a>
-<a href=#797 id=797 data-nosnippet>797</a>		std::process::exit(<span class="number">1</span>);
+<a href=#797 id=797 data-nosnippet>797</a>		std::process::<a href="https://doc.rust-lang.org/nightly/std/process/fn.exit.html">exit</a>(<span class="number">1</span>);
 <a href=#798 id=798 data-nosnippet>798</a>	}
 <a href=#799 id=799 data-nosnippet>799</a>}
 <a href=#800 id=800 data-nosnippet>800</a>
 <a href=#801 id=801 data-nosnippet>801</a><span class="comment">// --- Imports ---
 <a href=#802 id=802 data-nosnippet>802</a></span><span class="kw">use </span>std::{
-<a href=#803 id=803 data-nosnippet>803</a>	collections::{BTreeMap, HashMap},
-<a href=#804 id=804 data-nosnippet>804</a>	env,
-<a href=#805 id=805 data-nosnippet>805</a>	fs::{<span class="self">self</span>, File},
-<a href=#806 id=806 data-nosnippet>806</a>	io::Write,
-<a href=#807 id=807 data-nosnippet>807</a>	path::{Path, PathBuf},
-<a href=#808 id=808 data-nosnippet>808</a>	sync::{Arc, Mutex},
+<a href=#803 id=803 data-nosnippet>803</a>	collections::{<a href="https://doc.rust-lang.org/nightly/alloc/collections/btree/map/struct.BTreeMap.html">BTreeMap</a>, <a href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html">HashMap</a>},
+<a href=#804 id=804 data-nosnippet>804</a>	<a href="https://doc.rust-lang.org/nightly/core/macro.env.html">env</a>,
+<a href=#805 id=805 data-nosnippet>805</a>	fs::{<a class="self" href="https://doc.rust-lang.org/nightly/std/fs/index.html">self</a>, <a href="https://doc.rust-lang.org/nightly/std/fs/struct.File.html">File</a>},
+<a href=#806 id=806 data-nosnippet>806</a>	<a href="https://doc.rust-lang.org/nightly/std/io/trait.Write.html">io::Write</a>,
+<a href=#807 id=807 data-nosnippet>807</a>	path::{<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html">Path</a>, <a href="https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html">PathBuf</a>},
+<a href=#808 id=808 data-nosnippet>808</a>	sync::{<a href="https://doc.rust-lang.org/nightly/alloc/sync/struct.Arc.html">Arc</a>, <a href="https://doc.rust-lang.org/nightly/std/sync/poison/mutex/struct.Mutex.html">Mutex</a>},
 <a href=#809 id=809 data-nosnippet>809</a>};
 <a href=#810 id=810 data-nosnippet>810</a>
-<a href=#811 id=811 data-nosnippet>811</a><span class="kw">use </span>anyhow::{Context, <span class="prelude-ty">Result</span>, anyhow};
+<a href=#811 id=811 data-nosnippet>811</a><span class="kw">use </span>anyhow::{<a href="https://docs.rs/anyhow/1.0.102/anyhow/trait.Context.html">Context</a>, <a class="prelude-ty" href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>, <a href="https://docs.rs/anyhow/1.0.102/anyhow/macro.anyhow.html">anyhow</a>};
 <a href=#812 id=812 data-nosnippet>812</a><span class="kw">use </span>colored::<span class="kw-2">*</span>;
 <a href=#813 id=813 data-nosnippet>813</a><span class="kw">use </span>futures::stream::{<span class="self">self</span>, StreamExt};
-<a href=#814 id=814 data-nosnippet>814</a><span class="kw">use </span>log::{LevelFilter, error, info, warn};
+<a href=#814 id=814 data-nosnippet>814</a><span class="kw">use </span>log::{<a href="https://docs.rs/log/0.4.29/log/enum.LevelFilter.html">LevelFilter</a>, <a href="https://docs.rs/log/0.4.29/log/macro.error.html">error</a>, <a href="https://docs.rs/log/0.4.29/log/macro.info.html">info</a>, <a href="https://docs.rs/log/0.4.29/log/macro.warn.html">warn</a>};
 <a href=#815 id=815 data-nosnippet>815</a><span class="kw">use </span>reqwest::Client;
-<a href=#816 id=816 data-nosnippet>816</a><span class="kw">use </span>serde::{Deserialize, Serialize};
-<a href=#817 id=817 data-nosnippet>817</a><span class="kw">use </span>tempfile::Builder;
+<a href=#816 id=816 data-nosnippet>816</a><span class="kw">use </span>serde::{<a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Deserialize.html">Deserialize</a>, <a href="https://docs.rs/serde_derive/1.0.228/serde_derive/derive.Serialize.html">Serialize</a>};
+<a href=#817 id=817 data-nosnippet>817</a><span class="kw">use </span><a href="https://docs.rs/tempfile/latest/tempfile/struct.Builder.html">tempfile::Builder</a>;
 <a href=#818 id=818 data-nosnippet>818</a><span class="kw">use </span>toml;
 </code></pre></div></section></main></body></html>

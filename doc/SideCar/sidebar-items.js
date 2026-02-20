@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["Download"]};
+window.SIDEBAR_ITEMS = {"fn":["main"],"mod":["Download"]};
