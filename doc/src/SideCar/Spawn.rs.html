@@ -22,7 +22,7 @@
 <a href=#22 id=22 data-nosnippet>22</a>/// 2. Writes the DNS override JavaScript file to the app data directory
 <a href=#23 id=23 data-nosnippet>23</a>/// 3. Configures the sidecar process with NODE_OPTIONS to require the DNS
 <a href=#24 id=24 data-nosnippet>24</a>///    override script
-<a href=#25 id=25 data-nosnippet>25</a>/// 4. Sets the LAND_DNS_SERVER environment variable with the local DNS server
+<a href=#25 id=25 data-nosnippet>25</a>/// 4. Sets the Resolve environment variable with the local DNS server
 <a href=#26 id=26 data-nosnippet>26</a>///    address
 <a href=#27 id=27 data-nosnippet>27</a>/// 5. Spawns the sidecar process
 <a href=#28 id=28 data-nosnippet>28</a>///
@@ -69,7 +69,7 @@
 <a href=#69 id=69 data-nosnippet>69</a>	</span><a href="#55">app</a>.shell()
 <a href=#70 id=70 data-nosnippet>70</a>		.sidecar(<a href="#55">sidecar_name</a>)<span class="question-mark">?
 <a href=#71 id=71 data-nosnippet>71</a>		</span>.env(<span class="string">"NODE_OPTIONS"</span>, <span class="kw-2">&amp;</span><a href="#66">node_opts</a>)
-<a href=#72 id=72 data-nosnippet>72</a>		.env(<span class="string">"LAND_DNS_SERVER"</span>, <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"127.0.0.1:{port}"</span>))
+<a href=#72 id=72 data-nosnippet>72</a>		.env(<span class="string">"Resolve"</span>, <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"127.0.0.1:{port}"</span>))
 <a href=#73 id=73 data-nosnippet>73</a>		.spawn()<span class="question-mark">?</span>;
 <a href=#74 id=74 data-nosnippet>74</a>
 <a href=#75 id=75 data-nosnippet>75</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
