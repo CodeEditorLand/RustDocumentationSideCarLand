@@ -54,23 +54,26 @@
 <a href=#54 id=54 data-nosnippet>54</a></span><span class="kw">pub fn </span><a href="../../SideCar/Spawn/fn.spawn_node_sidecar.html">spawn_node_sidecar</a>(app:<span class="kw-2">&amp;</span>AppHandle, sidecar_name:<span class="kw-2">&amp;</span><a href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; anyhow::<a href="https://docs.rs/anyhow/1.0.102/anyhow/type.Result.html">Result</a>&lt;()&gt; {
 <a href=#55 id=55 data-nosnippet>55</a>	<span class="comment">// Ensure app data directory exists
 <a href=#56 id=56 data-nosnippet>56</a>	</span><span class="kw">let </span>data_dir = <a href="#54">app</a>.path().app_data_dir()<span class="question-mark">?</span>;
-<a href=#57 id=57 data-nosnippet>57</a>	fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.create_dir_all.html">create_dir_all</a>(<span class="kw-2">&amp;</span><a href="#56">data_dir</a>)<span class="question-mark">?</span>;
-<a href=#58 id=58 data-nosnippet>58</a>
-<a href=#59 id=59 data-nosnippet>59</a>	<span class="comment">// Write DNS override script to app data directory
-<a href=#60 id=60 data-nosnippet>60</a>	</span><span class="kw">let </span>override_path = <a href="#56">data_dir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"dns-override.js"</span>);
-<a href=#61 id=61 data-nosnippet>61</a>	fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#60">override_path</a>, <a href="#15">DNS_OVERRIDE</a>)<span class="question-mark">?</span>;
+<a href=#57 id=57 data-nosnippet>57</a>
+<a href=#58 id=58 data-nosnippet>58</a>	fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.create_dir_all.html">create_dir_all</a>(<span class="kw-2">&amp;</span><a href="#56">data_dir</a>)<span class="question-mark">?</span>;
+<a href=#59 id=59 data-nosnippet>59</a>
+<a href=#60 id=60 data-nosnippet>60</a>	<span class="comment">// Write DNS override script to app data directory
+<a href=#61 id=61 data-nosnippet>61</a>	</span><span class="kw">let </span>override_path = <a href="#56">data_dir</a>.<a href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html#method.join">join</a>(<span class="string">"dns-override.js"</span>);
 <a href=#62 id=62 data-nosnippet>62</a>
-<a href=#63 id=63 data-nosnippet>63</a>	<span class="comment">// Get the DNS server port from Mist module
-<a href=#64 id=64 data-nosnippet>64</a>	</span><span class="kw">let </span>port = dns_port();
-<a href=#65 id=65 data-nosnippet>65</a>	<span class="kw">let </span>node_opts = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"--require {}"</span>, override_path.display());
-<a href=#66 id=66 data-nosnippet>66</a>
-<a href=#67 id=67 data-nosnippet>67</a>	<span class="comment">// Spawn the sidecar with DNS configuration
-<a href=#68 id=68 data-nosnippet>68</a>	</span><a href="#54">app</a>.shell()
-<a href=#69 id=69 data-nosnippet>69</a>		.sidecar(<a href="#54">sidecar_name</a>)<span class="question-mark">?
-<a href=#70 id=70 data-nosnippet>70</a>		</span>.env(<span class="string">"NODE_OPTIONS"</span>, <span class="kw-2">&amp;</span><a href="#65">node_opts</a>)
-<a href=#71 id=71 data-nosnippet>71</a>		.env(<span class="string">"Resolve"</span>, <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"127.0.0.1:{port}"</span>))
-<a href=#72 id=72 data-nosnippet>72</a>		.spawn()<span class="question-mark">?</span>;
-<a href=#73 id=73 data-nosnippet>73</a>
-<a href=#74 id=74 data-nosnippet>74</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
-<a href=#75 id=75 data-nosnippet>75</a>}
+<a href=#63 id=63 data-nosnippet>63</a>	fs::<a href="https://doc.rust-lang.org/nightly/std/fs/fn.write.html">write</a>(<span class="kw-2">&amp;</span><a href="#61">override_path</a>, <a href="#15">DNS_OVERRIDE</a>)<span class="question-mark">?</span>;
+<a href=#64 id=64 data-nosnippet>64</a>
+<a href=#65 id=65 data-nosnippet>65</a>	<span class="comment">// Get the DNS server port from Mist module
+<a href=#66 id=66 data-nosnippet>66</a>	</span><span class="kw">let </span>port = dns_port();
+<a href=#67 id=67 data-nosnippet>67</a>
+<a href=#68 id=68 data-nosnippet>68</a>	<span class="kw">let </span>node_opts = <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"--require {}"</span>, override_path.display());
+<a href=#69 id=69 data-nosnippet>69</a>
+<a href=#70 id=70 data-nosnippet>70</a>	<span class="comment">// Spawn the sidecar with DNS configuration
+<a href=#71 id=71 data-nosnippet>71</a>	</span><a href="#54">app</a>.shell()
+<a href=#72 id=72 data-nosnippet>72</a>		.sidecar(<a href="#54">sidecar_name</a>)<span class="question-mark">?
+<a href=#73 id=73 data-nosnippet>73</a>		</span>.env(<span class="string">"NODE_OPTIONS"</span>, <span class="kw-2">&amp;</span><a href="#68">node_opts</a>)
+<a href=#74 id=74 data-nosnippet>74</a>		.env(<span class="string">"Resolve"</span>, <a href="https://doc.rust-lang.org/nightly/alloc/macro.format.html">format!</a>(<span class="string">"127.0.0.1:{port}"</span>))
+<a href=#75 id=75 data-nosnippet>75</a>		.spawn()<span class="question-mark">?</span>;
+<a href=#76 id=76 data-nosnippet>76</a>
+<a href=#77 id=77 data-nosnippet>77</a>	<a class="prelude-val" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html#variant.Ok">Ok</a>(())
+<a href=#78 id=78 data-nosnippet>78</a>}
 </code></pre></div></section></main></body></html>
