@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["DNS_OVERRIDE"],"fn":["spawn_node_sidecar"]};
